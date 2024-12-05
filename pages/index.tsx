@@ -118,7 +118,8 @@ export default function Home() {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.6 },
+    className: "text-center"
   }
 
   const ScrollProgressBar = () => {
@@ -147,16 +148,18 @@ export default function Home() {
 
   const ScrollIndicator = () => (
     <motion.div
-      className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      initial={{ y: 0 }}
-      animate={{
-        y: [0, 24, 0],
-      }}
-      transition={{
-        duration: 1.5,
-        repeat: Infinity,
-        repeatType: "loop",
-      }}
+      {...{
+        className: "absolute bottom-8 left-1/2 transform -translate-x-1/2",
+        initial: { y: 0 },
+        animate: {
+          y: [0, 24, 0],
+        },
+        transition: {
+          duration: 1.5,
+          repeat: Infinity,
+          repeatType: "loop",
+        }
+      } as MotionDivProps}
     >
       <ArrowDown className="w-6 h-6 text-purple-300" />
     </motion.div>
@@ -170,19 +173,24 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center p-4 bg-black bg-opacity-50 overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8 z-10"
+          {...{
+            initial: { opacity: 0, y: -50 },
+            animate: { opacity: 1, y: 0 },
+            transition: { duration: 0.8 },
+            className: "mb-8 z-10"
+          }}
         >
           <h1 className="text-6xl font-bold mb-4 text-purple-300 glow">Ian Bailey</h1>
           <p className="text-2xl text-gray-300">Computer Science Undergraduate @ Colorado State University | Fort Collins, CO</p>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="z-10"
+          {...{
+            initial: { opacity: 0 },
+            animate: { opacity: 1 },
+            transition: { delay: 0.5, duration: 0.8 },
+            className: "z-10",
+            style: { position: 'relative' }
+          } as MotionDivProps}
         >
           <a href="#about" 
              className="inline-flex items-center px-6 py-3 text-lg font-semibold rounded-full bg-purple-600 text-white hover:bg-purple-700 transition-colors">
@@ -215,11 +223,11 @@ export default function Home() {
       <main className="container mx-auto px-4 py-12 space-y-24">
         {/* About Section */}
         <motion.div
-          initial={fadeInUp.initial}
-          animate={fadeInUp.animate}
-          transition={fadeInUp.transition}
-          id="about"
-          className="text-center"
+          {...{
+            ...fadeInUp,
+            id: "about",
+            className: "text-center"
+          }}
         >
           <h2 className="text-4xl font-bold mb-6 text-purple-300">About Me</h2>
           <p className="max-w-2xl mx-auto text-lg text-gray-300">
@@ -245,7 +253,12 @@ export default function Home() {
         </motion.div>
 
         {/* Skills Section */}
-        <motion.section id="skills" {...fadeInUp}>
+        <motion.section 
+          {...{
+            ...fadeInUp,
+            id: "skills"
+          }}
+        >
           <h2 className="text-3xl font-bold mb-6 text-center text-purple-300">Technical Skills</h2>
           <div className="flex flex-wrap justify-center gap-6">
             {skills.map((skill) => (
@@ -261,7 +274,13 @@ export default function Home() {
         </motion.section>
 
         {/* Projects Section */}
-        <motion.section id="projects" {...fadeInUp}>
+        <motion.section 
+          {...{
+            ...fadeInUp,
+            id: "projects",
+            className: "text-center"
+          }}
+        >
           <h2 className="text-4xl font-bold mb-8 text-center text-purple-300">Featured Project</h2>
           <div className="bg-gray-800 border border-purple-600 rounded-lg p-6">
             <h3 className="text-2xl text-purple-300 mb-4">SIEM System with NIDS and HIDS Integration</h3>
@@ -282,7 +301,13 @@ export default function Home() {
         </motion.section>
 
         {/* Experience Section */}
-        <motion.section id="experience" {...fadeInUp}>
+        <motion.section 
+          {...{
+            ...fadeInUp,
+            id: "experience",
+            className: "text-center"
+          }}
+        >
           <h2 className="text-4xl font-bold mb-8 text-center text-purple-300">Experience</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gray-800 border border-purple-600 rounded-lg p-6">
@@ -309,7 +334,13 @@ export default function Home() {
         </motion.section>
 
         {/* Contact Section */}
-        <motion.section id="contact" className="text-center" {...fadeInUp}>
+        <motion.section 
+          {...fadeInUp}
+          {...{
+            id: "contact",
+            className: "text-center"
+          }}
+        >
           <h2 className="text-4xl font-bold mb-6 text-purple-300">Get In Touch</h2>
           <p className="mb-8 text-gray-300">
             I'm always open to new opportunities and collaborations. Feel free to reach out!
