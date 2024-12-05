@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import { motion, HTMLMotionProps } from "framer-motion"
-import { ArrowDown, Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
+import { ArrowDown, GithubIcon, Linkedin, Mail, ExternalLink } from 'lucide-react'
 import Link from "next/link"
 import { FaJava, FaPython, FaLinux, FaGitAlt, FaDocker } from 'react-icons/fa6'
 import { SiCplusplus } from 'react-icons/si'
@@ -234,19 +234,29 @@ export default function Home() {
             Hello! I'm Ian Bailey, an undergraduate Computer Science major at Colorado State University. My interests span across cybersecurity, software development, and solving real-world problems with innovative solutions. When I'm not coding or studying, I enjoy spending my free time exploring Colorado's beautiful outdoors, skiing, or watching football and basketball. I'm always excited to meet others who share a love for technology, learning, and creativity.
           </p>
           <div className="flex justify-center space-x-4 mt-8">
-            <a href="https://github.com/IanBailey1415" target="_blank" rel="noopener noreferrer"
-               className="inline-flex items-center px-4 py-2 bg-purple-800 hover:bg-purple-700 text-white rounded-md transition-colors">
-              <Github className="mr-2 h-4 w-4" />
+            <a 
+              href="https://github.com/IanBailey1415" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                console.log('GitHub button clicked');
+                // Prevent default if not working
+                // e.preventDefault();
+                window.open('https://github.com/IanBailey1415', '_blank');
+              }}
+              className="inline-flex items-center px-4 py-2 bg-purple-800 hover:bg-purple-700 text-white rounded-md transition-colors"
+            >
+              <GithubIcon size={20} className="mr-2" />
               GitHub
             </a>
             <a href="https://linkedin.com/in/ian-bailey1415" target="_blank" rel="noopener noreferrer"
                className="inline-flex items-center px-4 py-2 bg-purple-800 hover:bg-purple-700 text-white rounded-md transition-colors">
-              <Linkedin className="mr-2 h-4 w-4" />
+              <Linkedin size={20} className="mr-2" />
               LinkedIn
             </a>
             <a href="mailto:ian.bailey4117@gmail.com"
                className="inline-flex items-center px-4 py-2 bg-purple-800 hover:bg-purple-700 text-white rounded-md transition-colors">
-              <Mail className="mr-2 h-4 w-4" />
+              <Mail size={20} className="mr-2" />
               Email
             </a>
           </div>
@@ -347,13 +357,13 @@ export default function Home() {
           </p>
           <div className="flex justify-center space-x-8">
             <a href="mailto:ian.bailey4117@gmail.com" className="text-3xl text-purple-300 hover:text-purple-400 transition-colors">
-              <Mail />
+              <Mail size={32} />
             </a>
             <a href="https://github.com/IanBailey1415" target="_blank" rel="noopener noreferrer" className="text-3xl text-purple-300 hover:text-purple-400 transition-colors">
-              <Github />
+              <GithubIcon size={32} />
             </a>
             <a href="https://linkedin.com/in/ian-bailey1415" target="_blank" rel="noopener noreferrer" className="text-3xl text-purple-300 hover:text-purple-400 transition-colors">
-              <Linkedin />
+              <Linkedin size={32} />
             </a>
           </div>
         </motion.section>
